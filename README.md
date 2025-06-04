@@ -100,7 +100,7 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 **1. Clone o repositório:**
 ```bash
-git clone https://github.com/hydroalert/gs2-inundacoes-urbanas.git
+git clone https://github.com/FelipeSoares-1/GS2-hydroalert
 cd gs2-inundacoes-urbanas
 ```
 
