@@ -6,5 +6,13 @@
       "users_created": 3,
       "timestamp": "2025-06-05T13:13:47.028748"
     }
+  },
+  {
+    "timestamp": "2025-06-05T18:53:34.063123",
+    "event_type": "system_initialized",
+    "details": {
+      "users_created": 3,
+      "timestamp": "2025-06-05T18:53:34.063123"
+    }
   }
 ]
