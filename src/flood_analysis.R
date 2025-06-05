@@ -27,25 +27,32 @@ cat("🔄 Carregando dados de sensores...\n")
 
 # Função para carregar dados de múltiplos sensores
 load_sensor_data <- function() {
-    # Lista de arquivos de dados
+    # Lista de arquivos de dados (ajustado para procurar na pasta correta)
     data_files <- c(
-        "../data/SP001_sensor_data.csv",
-        "../data/RJ001_sensor_data.csv", 
-        "../data/BL001_sensor_data.csv"
+        file.path("..", "data", "SP001_sensor_data.csv"),
+        file.path("..", "data", "RJ001_sensor_data.csv"),
+        file.path("..", "data", "BL001_sensor_data.csv")
     )
-    
+    # Se não encontrar, tenta na pasta 'data' na raiz do projeto
+    if (!file.exists(data_files[1])) {
+        data_files <- c(
+            file.path("data", "SP001_sensor_data.csv"),
+            file.path("data", "RJ001_sensor_data.csv"),
+            file.path("data", "BL001_sensor_data.csv")
+        )
+    }
     all_data <- data.frame()
-    
     for (file in data_files) {
         if (file.exists(file)) {
-            sensor_id <- gsub("../data/(.*?)_sensor_data.csv", "\\1", file)
+            sensor_id <- gsub(".*([A-Z]{2}[0-9]{3})_sensor_data.csv", "\\1", file)
             data <- read_csv(file, show_col_types = FALSE)
             data$sensor_id <- sensor_id
             all_data <- rbind(all_data, data)
             cat("✅ Carregado:", sensor_id, "- Registros:", nrow(data), "\n")
+        } else {
+            cat("⚠️ Arquivo não encontrado:", file, "\n")
         }
     }
-    
     return(all_data)
 }
 
@@ -101,7 +108,7 @@ cor_matrix <- cor(correlation_data)
 print(round(cor_matrix, 3))
 
 # Salvar gráfico de correlação
-png("../data/correlation_analysis_R.png", width = 800, height = 600)
+png("data/correlation_analysis_R.png", width = 800, height = 600)
 corrplot(cor_matrix, 
          method = "color",
          type = "upper",
@@ -111,7 +118,7 @@ corrplot(cor_matrix,
          title = "Matriz de Correlação - Dados de Sensores\nHydroAlert System")
 dev.off()
 
-cat("📊 Gráfico de correlação salvo em: ../data/correlation_analysis_R.png\n")
+cat("📊 Gráfico de correlação salvo em: data/correlation_analysis_R.png\n")
 
 # =============================================================================
 # 4. ANÁLISE TEMPORAL E TENDÊNCIAS
@@ -131,7 +138,7 @@ hourly_analysis <- flood_data %>%
     )
 
 # Gráfico de tendências horárias
-png("../data/hourly_trends_R.png", width = 1200, height = 800)
+png("data/hourly_trends_R.png", width = 1200, height = 800)
 par(mfrow = c(2, 2))
 
 # Precipitação por hora
@@ -160,7 +167,7 @@ grid()
 
 dev.off()
 
-cat("📊 Gráficos de tendências horárias salvos em: ../data/hourly_trends_R.png\n")
+cat("📊 Gráficos de tendências horárias salvos em: data/hourly_trends_R.png\n")
 
 # =============================================================================
 # 5. DETECÇÃO DE EVENTOS EXTREMOS
@@ -244,13 +251,13 @@ report <- list(
 
 # Salvar relatório como JSON para integração com Python
 library(jsonlite)
-write_json(report, "../data/r_analysis_report.json", pretty = TRUE)
+write_json(report, "data/r_analysis_report.json", pretty = TRUE)
 
 cat("✅ Análise completa!\n")
 cat("📊 Registros analisados:", report$total_records, "\n")
 cat("🔗 Correlação chuva-água:", report$correlation_rainfall_water, "\n")
 cat("📈 R² do modelo preditivo:", report$model_r_squared, "\n")
 cat("🚨 Eventos extremos:", report$extreme_events, "\n")
-cat("💾 Relatório salvo em: ../data/r_analysis_report.json\n")
+cat("💾 Relatório salvo em: data/r_analysis_report.json\n")
 
 cat("\n🎯 ANÁLISE EM R CONCLUÍDA COM SUCESSO!\n")

@@ -47,12 +47,20 @@ def generate_sensor_data():
         base_rainfall = locations[loc]["rainfall"] * 0.6
         base_water = locations[loc]["water_level"] * 0.7
         base_moisture = locations[loc]["moisture"] * 0.8
-        
-        for i in range(7):
-            factor = 0.7 + (i * 0.05)  # Aumenta gradualmente
-            rainfall_history.append(base_rainfall * factor + np.random.normal(0, 2))
-            water_level_history.append(base_water * factor + np.random.normal(0, 4))
-            moisture_history.append(min(100, base_moisture * factor + np.random.normal(0, 3)))
+
+        # Forçar valores extremos para Blumenau - Centro para testar o risco
+        if loc == "Blumenau - Centro":
+            for i in range(7):
+                # Simula chuva extrema, nível de água alto e solo saturado
+                rainfall_history.append(50 + np.random.normal(0, 2))
+                water_level_history.append(120 + np.random.normal(0, 4))
+                moisture_history.append(98 + np.random.normal(0, 1))
+        else:
+            for i in range(7):
+                factor = 0.7 + (i * 0.05)  # Aumenta gradualmente
+                rainfall_history.append(base_rainfall * factor + np.random.normal(0, 2))
+                water_level_history.append(base_water * factor + np.random.normal(0, 4))
+                moisture_history.append(min(100, base_moisture * factor + np.random.normal(0, 3)))
         
         locations[loc]["rainfall_history"] = rainfall_history
         locations[loc]["water_level_history"] = water_level_history

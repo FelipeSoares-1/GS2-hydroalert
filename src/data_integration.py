@@ -136,9 +136,15 @@ def augment_with_historical_data(real_events):
         'water_level': water_level,
         'flood': flood
     })
-    
+
+    # Aumentar exemplos de flood=1 para balancear o dataset
+    flood_df = df[df['flood'] == 1]
+    for _ in range(4):  # Replicar 4x os exemplos de inundação
+        df = pd.concat([df, flood_df], ignore_index=True)
+    df = df.sample(frac=1, random_state=42).reset_index(drop=True)  # Embaralhar
+
     print(f"✅ Dataset augmentado: {len(df)} amostras totais")
-    print(f"✅ Eventos de inundação: {flood.sum()} ({flood.sum()/len(df)*100:.1f}%)")
+    print(f"✅ Eventos de inundação: {df['flood'].sum()} ({df['flood'].sum()/len(df)*100:.1f}%)")
     print(f"✅ Dados reais incorporados: {len(real_events)} eventos")
     
     return df# Função para carregar e preparar os dados
@@ -221,13 +227,17 @@ model.summary()
 
 # Treinar modelo
 early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+from sklearn.utils import class_weight
+class_weights = class_weight.compute_class_weight('balanced', classes=np.unique(y_train), y=y_train)
+class_weight_dict = {i: w for i, w in enumerate(class_weights)}
 history = model.fit(
     X_train, y_train,
     epochs=50,
     batch_size=32,
     validation_split=0.2,
     callbacks=[early_stopping],
-    verbose=1
+    verbose=1,
+    class_weight=class_weight_dict
 )
 
 # Avaliar modelo

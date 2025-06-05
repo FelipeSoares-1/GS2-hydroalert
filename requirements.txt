@@ -11,13 +11,17 @@ requests>=2.25.0
 
 # Segurança e Autenticação
 PyJWT>=2.3.0
+JWT>=2.3.0
 cryptography>=3.4.0
 bcrypt>=3.2.0
 
 # API e Cloud Computing
-flask>=2.0.0
-flask-cors>=3.0.0
-gunicorn>=20.1.0
+flask==2.3.3
+flask-cors==4.0.0
+pandas==1.5.3
+sqlite3
+requests==2.31.0
+gunicorn==21.2.0
 markdown>=3.4.0
 weasyprint>=56.0
 opencv-python>=4.5.0
