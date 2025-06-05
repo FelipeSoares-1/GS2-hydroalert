@@ -101,7 +101,7 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 **1. Clone o repositório:**
 ```bash
 git clone https://github.com/FelipeSoares-1/GS2-hydroalert
-cd gs2-inundacoes-urbanas
+cd GS2-hydroalert
 ```
 
 **2. Instale as dependências Python:**
@@ -121,31 +121,55 @@ pip install -r requirements.txt
 ```bash
 python src/flood_prediction_model.py
 ```
+<p align="center">
+  <img src="data/model_training_metrics.png" alt="Treinamento do modelo LSTM" width="60%"><br>
+  <i>Figura: Métricas do treinamento do modelo LSTM</i>
+</p>
 
 **Fase 2 - Inicialização do sistema de dados:**
 ```bash
 python src/data_integration.py
 ```
+<p align="center">
+  <img src="data/flood_data_analysis.png" alt="Análise dos dados integrados" width="60%"><br>
+  <i>Figura: Visualização dos dados integrados e análise inicial</i>
+</p>
 
 **Fase 3 - Execução do dashboard principal:**
 ```bash
 streamlit run src/flood_dashboard.py
 ```
+<p align="center">
+  <img src="data/SP001_visualization.png" alt="Dashboard principal em execução" width="60%"><br>
+  <i>Figura: Dashboard interativo com mapa e alertas</i>
+</p>
 
 **Fase 4 - API Cloud Computing:**
 ```bash
 python src/cloud_api.py
 ```
+<p align="center">
+  <img src="assets/logo-fiap.png" alt="API Cloud Computing" width="30%"><br>
+  <i>Figura ilustrativa: API Cloud Computing ativa</i>
+</p>
 
 **Fase 5 - Sistema de segurança:**
 ```bash
 python src/security_system.py
 ```
+<p align="center">
+  <img src="data/security_logs.json" alt="Logs do sistema de segurança" width="60%"><br>
+  <i>Figura: Exemplo de logs de segurança gerados</i>
+</p>
 
 **Fase 6 - Análise estatística em R:**
 ```bash
 Rscript src/flood_analysis.R
 ```
+<p align="center">
+  <img src="data/correlation_analysis_R.png" alt="Análise estatística em R" width="60%"><br>
+  <i>Figura: Análise de correlação e tendências em R</i>
+</p>
 
 **5. Acesso ao sistema:**
 - Dashboard principal: `http://localhost:8501`
