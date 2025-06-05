@@ -100,7 +100,7 @@ GS2-hydroalert/
   <img src="data/flood_data_analysis.png" alt="Análise dos dados integrados" width="60%">
 </p>
 
-### Dashboard SP001
+### Análise dashboard Região SP
 <p align="center">
   <img src="data/SP001_visualization.png" alt="Dashboard da região SP001" width="60%">
 </p>
