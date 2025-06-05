@@ -141,15 +141,17 @@ python src/flood_prediction_model.py
 python src/data_integration.py
 ```
 
-#### Fase 3 – Abrir o dashboard
+
+#### Fase 3 – Executar API
+```bash
+python src/cloud_api.py
+```
+
+#### Fase 4 – Abrir o dashboard
 ```bash
 streamlit run src/flood_dashboard.py
 ```
 
-#### Fase 4 – Executar API
-```bash
-python src/cloud_api.py
-```
 
 #### Fase 5 – Segurança
 ```bash
