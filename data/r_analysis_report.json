@@ -1,0 +1,12 @@
+{
+  "total_records": [2164],
+  "sensors_analyzed": [3],
+  "date_range": ["2025-05-06 a 2025-06-05"],
+  "extreme_events": [109],
+  "correlation_rainfall_water": [0.008],
+  "correlation_rainfall_moisture": [0.016],
+  "model_r_squared": [0.3506],
+  "avg_rainfall": [5.5],
+  "avg_water_level": [103.81],
+  "avg_moisture": [79.57]
+}
