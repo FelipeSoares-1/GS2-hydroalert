@@ -90,6 +90,20 @@ GS2-hydroalert/
 
 ## 📸 Imagens e Visualizações
 
+
+### Painel de Monitoramento em Tempo Real e Previsão de Riscos
+<p align="center">
+  <img src="assets/painel_parte_1.png" alt="Treinamento do modelo LSTM" width="60%">
+</p>
+
+<p align="center">
+  <img src="assets/painel_parte_2.png" alt="Treinamento do modelo LSTM" width="40%">
+</p>
+
+<p align="center">
+  <img src="assets/painel_parte_3.png" alt="Treinamento do modelo LSTM" width="60%">
+</p>
+
 ### Modelo LSTM
 <p align="center">
   <img src="data/model_training_metrics.png" alt="Treinamento do modelo LSTM" width="60%">
@@ -108,6 +122,10 @@ GS2-hydroalert/
 ### Análise Estatística em R
 <p align="center">
   <img src="src/data/correlation_analysis_R.png" alt="Análise de correlação R" width="60%">
+</p>
+
+<p align="center">
+  <img src="src/data/hourly_trends_R.png" alt="Análise de correlação R" width="60%">
 </p>
 
 ---
