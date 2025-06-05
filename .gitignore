@@ -27,14 +27,6 @@ Tarefa_*.pdf
 Tarefa_*.txt
 GUIA_VIDEO.md
 
-# Arquivos duplicados fora da pasta src/
-/data_integration.py
-/esp32_water_level.ino
-/flood_dashboard.py
-/flood_prediction_model.py
-/flood_prediction_model.h5
-/data/
-/models/
 
 # ========================================
 # ARQUIVOS PYTHON PADRÃO
@@ -181,10 +173,7 @@ dmypy.json
 *.pb
 *.tflite
 
-# Data files
-*.csv
-*.json
-*.pkl
+
 
 # Log files
 *.log
