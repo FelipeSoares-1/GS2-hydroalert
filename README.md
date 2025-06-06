@@ -200,7 +200,11 @@ Rscript src/flood_analysis.R
 - Análise estatística de tendências com R
 
 ---
+## 🎥 Vídeo e PDF 
 
+-  **Vídeo demonstrativo**: [Assista aqui](https://youtu.be/vsJT3dc0A7U)
+-  **PDF Relatório**: [Leia aqui](./GS2_Relatorio_Final.pdf)
+---
 ## 🗃 Histórico de Versões
 
 | Versão | Data       | Mudanças |
